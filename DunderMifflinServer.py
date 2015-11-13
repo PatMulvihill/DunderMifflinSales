@@ -1,4 +1,3 @@
-
 #DunderMifflinServer.py
 
 import socket
@@ -23,7 +22,7 @@ while True:
         username2 = rowsList[0].strip(' ')
         if username == username2:
             # the server responds
-            message = "Password: "
+            message = "ok"
             message = message.encode('UTF-8')
             serverSocket.sendto(message, address)
         else:
@@ -42,7 +41,7 @@ while True:
     #print(stuRecLst)
     
     # Capitalize the message from the client
-    message = "Invalid"
+    message = "badf"
     message = message.encode('UTF-8')
     # Otherwise, the server responds
     serverSocket.sendto(message, address)
