@@ -1,15 +1,8 @@
-#DunderMifflinClient.py
+# GUI
 
-import socket
-import time
 from tkinter import *
 import tkinter.messagebox as tm
 
-serverName = 'localhost'
-serverPort = 12000
-clientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
-# GUI
 
 class LoginFrame(Frame):
     def __init__(self, master):
@@ -37,20 +30,17 @@ class LoginFrame(Frame):
     def _login_btn_clickked(self):
         #print("Clicked")
         username = self.entry_1.get()
-        clientSocket.sendto(username.encode('UTF-8'),(serverName, serverPort))
-        
         password = self.entry_2.get()
-        clientSocket.sendto(password.encode('UTF-8'),(serverName, serverPort))
 
         #print(username, password)
-        message, address = clientSocket.recvfrom(1024)
-        message = message.decode('UTF-8')
-        print(message)
 
-        if message == "ok":
-            tm.showinfo("Login info", "Welcome")
+        if username == "john" and password == "password":
+            tm.showinfo("Login info", "Welcome John")
         else:
-            tm.showinfo("Login error", message)
+            tm.showerror("Login error", "Incorrect username")
+
+
+
 
 root = Tk()
 lf = LoginFrame(root)
