@@ -1,7 +1,7 @@
 username	password	Name	avg # of sales	avg salary
 dwight.schrute	ds123	Dwight Schrute	143	52639
 stanley.hudson	sh123	Stanley Hudson	123	49153
-james.halper	jh123	James Halpert	99	45886
+james.halpert	jh123	James Halpert	99	45886
 phyllis.vance	pv123	Phyllis Vance	86	41102
 pamela.halpert	ph123	Pamela Halpert	61	35403
 andrew.bernard	ab123	Andrew Bernard	58	34319

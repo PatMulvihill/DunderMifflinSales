@@ -1,17 +1,16 @@
 #DunderMifflinClient.py
 
 import socket
-import time
 from tkinter import *
 import tkinter.messagebox as tm
+from tkinter import ttk
 
 serverName = 'localhost'
 serverPort = 12000
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-# GUI
-
 class LoginFrame(Frame):
+    
     def __init__(self, master):
         super().__init__(master)
 
@@ -26,15 +25,24 @@ class LoginFrame(Frame):
         self.entry_1.grid(row=0, column=1)
         self.entry_2.grid(row=1, column=1)
 
-        self.checkbox = Checkbutton(self, text="Keep me logged in")
-        self.checkbox.grid(columnspan=2)
-
-        self.logbtn = Button(self, text="Login", command = self._login_btn_clickked)
+        self.logbtn = Button(self, text="Login", command = self._login_btn_clicked)
         self.logbtn.grid(columnspan=2)
 
         self.pack()
 
-    def _login_btn_clickked(self):
+    def _login_btn_clicked(self):
+
+        def add(*args):
+            try:
+                value1 = int(reams.get())
+                value2 = int(moreReams.get())
+                reams.set(value1 + value2)
+            except ValueError:
+                pass
+
+        def logout():
+            root.destroy()
+        
         #print("Clicked")
         username = self.entry_1.get()
         clientSocket.sendto(username.encode('UTF-8'),(serverName, serverPort))
@@ -45,13 +53,15 @@ class LoginFrame(Frame):
         #print(username, password)
         message, address = clientSocket.recvfrom(1024)
         message = message.decode('UTF-8')
-        print(message)
 
-        if message == "ok":
-            tm.showinfo("Login info", "Welcome")
+        if message == "200 OK":
+            tm.showinfo("Logged in", message)
+            
         else:
             tm.showinfo("Login error", message)
 
 root = Tk()
+root.title("Dunder Mifflin GUI")
+root.geometry('{}x{}'.format(270, 80))
 lf = LoginFrame(root)
 root.mainloop()
