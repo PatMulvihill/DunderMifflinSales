@@ -3,8 +3,6 @@ from tkinter import ttk
 
 class MenuFrame(Frame):
 
-    sales = StringVar()
-
     def __init__(self, master):
         super().__init__(master)
         
