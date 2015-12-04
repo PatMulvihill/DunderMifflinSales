@@ -31,26 +31,13 @@ class LoginFrame(Frame):
         self.pack()
 
     def _login_btn_clicked(self):
-
-        def add(*args):
-            try:
-                value1 = int(reams.get())
-                value2 = int(moreReams.get())
-                reams.set(value1 + value2)
-            except ValueError:
-                pass
-
-        def logout():
-            root.destroy()
         
-        #print("Clicked")
         username = self.entry_1.get()
         clientSocket.sendto(username.encode('UTF-8'),(serverName, serverPort))
         
         password = self.entry_2.get()
         clientSocket.sendto(password.encode('UTF-8'),(serverName, serverPort))
 
-        #print(username, password)
         message, address = clientSocket.recvfrom(1024)
         message = message.decode('UTF-8')
 
