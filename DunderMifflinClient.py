@@ -4,6 +4,7 @@ import socket
 from tkinter import *
 import tkinter.messagebox as tm
 from tkinter import ttk
+import Menu
 
 serverName = 'localhost'
 serverPort = 12000
@@ -30,6 +31,7 @@ class LoginFrame(Frame):
 
         self.pack()
 
+
     def _login_btn_clicked(self):
         
         username = self.entry_1.get()
@@ -43,9 +45,14 @@ class LoginFrame(Frame):
 
         if message == "200 OK":
             tm.showinfo("Logged in", message)
+            menu = Tk()
+            menu.title("Dunder Mifflin GUI")
+            mf = Menu.MenuFrame(menu)
+            menu.mainloop()
             
         else:
             tm.showinfo("Login error", message)
+
 
 root = Tk()
 root.title("Dunder Mifflin GUI")
