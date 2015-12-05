@@ -10,6 +10,7 @@ serverName = 'localhost'
 serverPort = 12000
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
+
 class LoginFrame(Frame):
     
     def __init__(self, master):
@@ -45,17 +46,20 @@ class LoginFrame(Frame):
 
         if message == "200 OK":
             tm.showinfo("Logged in", message)
-            menu = Tk()
-            menu.title("Dunder Mifflin GUI")
-            mf = Menu.MenuFrame(menu)
-            menu.mainloop()
+            mymenu = Toplevel()
+            mymenu.title("Dunder Mifflin GUI")
+            mf = Menu.MenuFrame(mymenu)
             
         else:
             tm.showinfo("Login error", message)
 
 
-root = Tk()
-root.title("Dunder Mifflin GUI")
-root.geometry('{}x{}'.format(270, 80))
-lf = LoginFrame(root)
-root.mainloop()
+def main():
+    root = Tk()
+    root.title("Dunder Mifflin GUI")
+    root.geometry('{}x{}'.format(270, 80))
+    lf = LoginFrame(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()

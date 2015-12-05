@@ -5,8 +5,9 @@ class MenuFrame(Frame):
 
     def __init__(self, master):
         super().__init__(master)
-        
-        mainframe = ttk.Frame(root, padding="3 3 12 12")
+
+        root = Tk()
+        mainframe = ttk.Frame(root,padding="3 3 12 12")
         mainframe.grid(column = 0, row = 0, sticky = (N, W, E, S))
         mainframe.columnconfigure(0, weight = 1)
         mainframe.rowconfigure(0, weight = 1)
@@ -44,7 +45,9 @@ class MenuFrame(Frame):
     def logout():
         root.destroy()
 
-root = Tk()
-root.title("Dunder Mifflin GUI")
-mf = MenuFrame(root)
-root.mainloop()
+if __name__ == "__main__":
+    root = Tk()
+    root.title("Dunder Mifflin GUI")
+    mf = MenuFrame(root)
+    root.mainloop()
+    root.destroy()
