@@ -45,11 +45,11 @@ class LoginFrame(Frame):
             mf.pack(fill="both", expand=True)
 
         else:
-            tm.showinfo(message, "Login error")
+            tm.showinfo(message, "LOGIN ERROR")
 
 root = Tk()
 Menu.root = root
-root.title("GUI")
+root.title("Sales Counter")
 root.geometry('{}x{}'.format(300, 180))
 lf = LoginFrame(root)
 root.mainloop()
