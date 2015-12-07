@@ -10,6 +10,7 @@ class MenuFrame(Frame):
 
     def __init__(self, master):
         super().__init__(master)
+        root = None
 
         message = "GET name, sales"
         clientSocket.sendto(message.encode('UTF-8'),(serverName, serverPort))
@@ -63,5 +64,8 @@ class MenuFrame(Frame):
 
         message = self.sales.get()
         clientSocket.sendto(message.encode('UTF-8'),(serverName, serverPort))
-        
+
+        print(root)
         self.destroy()
+        root.destroy()
+        root.quit()

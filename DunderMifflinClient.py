@@ -48,6 +48,7 @@ class LoginFrame(Frame):
             tm.showinfo(message, "Login error")
 
 root = Tk()
+Menu.root = root
 root.title("GUI")
 root.geometry('{}x{}'.format(300, 180))
 lf = LoginFrame(root)

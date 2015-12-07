@@ -1,14 +1,3 @@
-#hey john
-#somewhere in this file (server), you need to send the contents of row[3] for the user
-#that logs in
-#from there, you need to receive the amount that the user would like to add from Menu.py
-#you need to add that number to the number that you originally sent and send the result
-#you also need to replace the number in row[3] with the new number
-#good luck and thank you. i'll be up 10ish working on this report so text me
-
-
-
-
 import socket
 import os, sys
 # Create a UDP socket
@@ -87,14 +76,6 @@ while True:
                 message = message.encode('UTF-8')
                 serverSocket.sendto(message, address)
         
-        
-        #Lname=stuRecLst[1]
-        #T1=float(stuRecLst[2])
-        #T2=float(stuRecLst[3])
-        #T3=float(stuRecLst[4])
-        #Tav=(T1+T2+T3)/3
-        #print(ID,Lname,T1,T2,T3)
-
     # the server responds
     message = "401 Unauthorized"
     message = message.encode('UTF-8')
