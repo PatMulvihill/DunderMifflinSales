@@ -10,18 +10,29 @@ class MenuFrame(Frame):
 
     def __init__(self, master):
         super().__init__(master)
-        
+
+        message = "GET name, sales"
+        clientSocket.sendto(message.encode('UTF-8'),(serverName, serverPort))
+
+        name, address = clientSocket.recvfrom(1024)
+        name = name.decode('UTF-8')
+
+        # sales2 is the number of sales coming from the server
+        sales2, address = clientSocket.recvfrom(1024)
+        sales2 = sales2.decode('UTF-8')
+
+        # sales is the variable that will show up in the gui
         self.sales = StringVar()
+        # moreSales is the user input
         self.moreSales = StringVar()
-        self.sales.set("1")
+        self.sales.set(sales2)
 
         mainframe = ttk.Frame(self, padding="3 3 12 12")
         mainframe.grid(column = 0, row = 0, sticky = (N, W, E, S))
         mainframe.columnconfigure(0, weight = 1)
         mainframe.rowconfigure(0, weight = 1)
 
-
-        welcome = "Logged in."
+        welcome = "Welcome, " + name
 
         sales_entry = ttk.Entry(mainframe, width = 7, textvariable = self.moreSales)
 
@@ -49,4 +60,8 @@ class MenuFrame(Frame):
             pass
 
     def logout(self):
+
+        message = self.sales.get()
+        clientSocket.sendto(message.encode('UTF-8'),(serverName, serverPort))
+        
         self.destroy()
