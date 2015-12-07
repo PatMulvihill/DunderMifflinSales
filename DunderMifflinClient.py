@@ -1,5 +1,3 @@
-#DunderMifflinClient.py
-
 import socket
 from tkinter import *
 import tkinter.messagebox as tm
@@ -10,9 +8,8 @@ serverName = 'localhost'
 serverPort = 12000
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-
 class LoginFrame(Frame):
-    
+
     def __init__(self, master):
         super().__init__(master)
 
@@ -32,12 +29,11 @@ class LoginFrame(Frame):
 
         self.pack()
 
-
     def _login_btn_clicked(self):
-        
+
         username = self.entry_1.get()
         clientSocket.sendto(username.encode('UTF-8'),(serverName, serverPort))
-        
+
         password = self.entry_2.get()
         clientSocket.sendto(password.encode('UTF-8'),(serverName, serverPort))
 
@@ -45,21 +41,15 @@ class LoginFrame(Frame):
         message = message.decode('UTF-8')
 
         if message == "200 OK":
-            tm.showinfo("Logged in", message)
-            mymenu = Toplevel()
-            mymenu.title("Dunder Mifflin GUI")
-            mf = Menu.MenuFrame(mymenu)
-            
+            tm.showinfo(message, "Login was successful.")
+            mf = Menu.MenuFrame(root)
+            mf.pack(fill="both", expand=True)
+
         else:
-            tm.showinfo("Login error", message)
+            tm.showinfo(message, "Login error")
 
-
-def main():
-    root = Tk()
-    root.title("Dunder Mifflin GUI")
-    root.geometry('{}x{}'.format(270, 80))
-    lf = LoginFrame(root)
-    root.mainloop()
-
-if __name__ == "__main__":
-    main()
+root = Tk()
+root.title("GUI")
+root.geometry('{}x{}'.format(270, 180))
+lf = LoginFrame(root)
+root.mainloop()
