@@ -49,6 +49,6 @@ class LoginFrame(Frame):
 
 root = Tk()
 root.title("GUI")
-root.geometry('{}x{}'.format(270, 180))
+root.geometry('{}x{}'.format(300, 180))
 lf = LoginFrame(root)
 root.mainloop()
