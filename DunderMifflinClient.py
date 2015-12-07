@@ -41,7 +41,6 @@ class LoginFrame(Frame):
         message = message.decode('UTF-8')
 
         if message == "200 OK":
-            tm.showinfo(message, "Login was successful.")
             mf = Menu.MenuFrame(root)
             mf.pack(fill="both", expand=True)
 

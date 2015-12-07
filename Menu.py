@@ -1,5 +1,10 @@
 from tkinter import *
 from tkinter import ttk
+import socket
+
+serverName = 'localhost'
+serverPort = 12000
+clientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 class MenuFrame(Frame):
 
@@ -16,7 +21,7 @@ class MenuFrame(Frame):
         mainframe.rowconfigure(0, weight = 1)
 
 
-        welcome = "Welcome!"
+        welcome = "Logged in."
 
         sales_entry = ttk.Entry(mainframe, width = 7, textvariable = self.moreSales)
 
@@ -38,6 +43,8 @@ class MenuFrame(Frame):
             value1 = int(self.sales.get())
             value2 = int(self.moreSales.get())
             self.sales.set(value1 + value2)
+            
+            
         except ValueError:
             pass
 
